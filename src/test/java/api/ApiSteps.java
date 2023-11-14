@@ -12,7 +12,6 @@ import static specs.LoginSpec.*;
 
 public class ApiSteps {
 
-    @Step("Запрос на авторизацию пользователя")
     public LoginResponseModel login(CredentialsModel credentials) {
         return given(loginRequestSpec)
                 .body(credentials)
@@ -23,7 +22,6 @@ public class ApiSteps {
                 .extract().as(LoginResponseModel.class);
     }
 
-    @Step("Запрос на удаление всех книг в профиле")
     public void deleteAllBooks(LoginResponseModel loginResponse) {
         given(booksRequestSpec)
                 .header("Authorization", "Bearer " + loginResponse.getToken())
@@ -34,7 +32,6 @@ public class ApiSteps {
                 .spec(booksResponseSpec204);
     }
 
-    @Step("Запрос на добавление одной книги")
     public void addBook(LoginResponseModel loginResponse, AddBooksListModel booksList) {
         given(booksRequestSpec)
                 .header("Authorization", "Bearer " + loginResponse.getToken())
@@ -45,7 +42,6 @@ public class ApiSteps {
                 .spec(booksResponseSpec201);
     }
 
-    @Step("Запрос на удаление одной книги")
     public void deleteBook(LoginResponseModel loginResponse, DeleteBookModel deleteBook) {
         given(booksRequestSpec)
                 .header("Authorization", "Bearer " + loginResponse.getToken())

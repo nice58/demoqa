@@ -17,7 +17,6 @@ public class BooksSpec {
             .log().method()
             .log().body()
             .contentType(JSON);
-            //.baseUri(baseURI);
 
     public static ResponseSpecification booksResponseSpec201 = new ResponseSpecBuilder()
             .log(STATUS)
